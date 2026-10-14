@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Address Book Buddies</title>
+  <style>
+    body { font-family: sans-serif; margin: 40px; }
+    table { border-collapse: collapse; width: 50%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+
+<h2 th:text="'Buddies for Address Book #' + ${addressBookId}">Address Book Buddies</h2>
+
+<!-- Display table if buddies exist -->
+<table th:if="${not #lists.isEmpty(buddies)}">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Phone Number</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="buddy : ${buddies}">
+    <td th:text="${buddy.id}">1</td>
+    <td th:text="${buddy.name}">John Doe</td>
+    <td th:text="${buddy.phoneNumber}">555-1234</td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Fallback if the address book is empty -->
+<p th:if="${#lists.isEmpty(buddies)}">No buddies found in this address book.</p>
+
+<br>
+<a href="/addressbooks">Back to Address Books</a>
+
+</body>
+</html>
