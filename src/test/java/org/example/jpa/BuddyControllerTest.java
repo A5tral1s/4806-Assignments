@@ -5,12 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
-import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.client.RestTestClient;
 import org.springframework.transaction.annotation.Transactional;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
@@ -24,8 +21,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @Transactional
 class BuddyControllerTest {
-
-    private RestTestClient restTestClient;
 
     @Autowired
     private MockMvc mockMvc;
@@ -59,7 +54,6 @@ class BuddyControllerTest {
         String contentJson = result.getResponse().getContentAsString();
         JsonNode jsonNode = objectMapper.readTree(contentJson);
         long generatedId = jsonNode.get("id").asLong();
-        String url = "/BuddyInfo/" + generatedId;
         mockMvc.perform(get("/BuddyInfo/" + generatedId)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

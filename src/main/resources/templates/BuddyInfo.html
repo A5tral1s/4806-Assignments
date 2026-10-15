@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BuddyInfo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        form { margin-bottom: 20px; background: #f9f9f9; padding: 15px; border-radius: 5px; }
+        input { padding: 6px; margin-right: 10px; }
+        button { padding: 6px 12px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<h1>Buddy Info</h1>
+
+<h3>Saved Contacts</h3>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${contacts.empty}">
+        <td colspan="5">No contacts found in the address book.</td>
+    </tr>
+    <tr th:each="c : ${contacts}">
+        <td th:text="${c.id}">1</td>
+        <td th:text="${c.firstName}">John Doe</td>
+        <td th:text="${c.phoneNumber}">123-456-7890</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
