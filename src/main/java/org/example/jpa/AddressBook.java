@@ -1,4 +1,4 @@
-package org.example.jpa.model;
+package org.example.jpa;
 
 import java.io.Serializable;
 import java.util.ArrayList;

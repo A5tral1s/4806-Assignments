@@ -1,9 +1,6 @@
-package org.example.jpa.controller;
+package org.example.jpa;
 
-import org.example.jpa.repository.AddressBookRepository;
-import org.example.jpa.repository.BuddyRepository;
-import org.example.jpa.model.AddressBook;
-import org.example.jpa.model.BuddyInfo;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,15 +22,18 @@ public class BuddyInfoController {
         return (List<BuddyInfo>) buddyRepository.findAll();
     }
 
-    // Add
     @PostMapping("/book/{bookId}")
     public BuddyInfo addBuddyToBook(@PathVariable Long bookId, @RequestBody BuddyInfo buddy) {
-        AddressBook company = addressBookRepository.findById(bookId)
-                .orElseThrow(() -> new RuntimeException("Company not found"));
-
-        buddy.setBook(company);
+        AddressBook book = addressBookRepository.findById(bookId)
+                .orElseThrow(() -> new RuntimeException("Book not found"));
+        buddy.setBook(book);
         return buddyRepository.save(buddy);
+    }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public BuddyInfo addBuddy(@RequestBody BuddyInfo buddy) {
+        return buddyRepository.save(buddy);
     }
 
 }
