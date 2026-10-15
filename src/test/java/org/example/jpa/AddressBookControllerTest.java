@@ -64,7 +64,7 @@ public class AddressBookControllerTest {
                         .content(payload))
                 .andExpect(jsonPath("$.id").value(1));
 
-        mockMvc.perform(post("/AddressBook/1/buddies")
+        mockMvc.perform(post("/AddressBook/1/BuddyInfo")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(buddyLoad))
                 .andExpect(status().isOk());
