@@ -1,8 +1,8 @@
-curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks -H "Content-Type:application/json" -d "{"name":"Solo"}"
+curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook -H "Content-Type:application/json" -d "{"name":"Solo"}"
 
 
-curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks/1/buddyinfo -H "Content-Type: application/json" -d '{"firstName":"John", "phoneNumber":"555-0199"}'
-curl -i -X POST -d "{"name":"Solo"}" -H "Content-Type:application/json" /addressBooks
+curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook/1/buddyinfo -H "Content-Type: application/json" -d '{"firstName":"John", "phoneNumber":"555-0199"}'
+curl -i -X POST -d "{"name":"Solo"}" -H "Content-Type:application/json" /AddressBook
 
 curl -i -X POST -d "{"firstName":"Carl","phoneNumber":"1231"}" -H "Content-Type:application/json" /buddyInfoes/book/1
 
