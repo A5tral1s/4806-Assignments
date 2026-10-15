@@ -1,18 +1,18 @@
 curl -X GET https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net
 
 # Test POST request with JSON data
-curl -i -X POST -d "{"name":"Base"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks
+curl -i -X POST -d "{"name":"Base"}" -H "Content-Type:application/json" /addressBooks
 
-curl -i -X POST -d "{"name":"Solo"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks
+curl -i -X POST -d "{"name":"Solo"}" -H "Content-Type:application/json" /addressBooks
 
-curl -i -X POST -d "{"firstName":"Carl","phoneNumber":"1231"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/buddyInfoes/book/1
+curl -i -X POST -d "{"firstName":"Carl","phoneNumber":"1231"}" -H "Content-Type:application/json" /buddyInfoes/book/1
 
-curl -i -X PUT -H "Content-Type:text/uri-list" -d "https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks/1" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/buddyInfoes/1/book
+curl -i -X PUT -H "Content-Type:text/uri-list" -d "/addressBooks/1" /buddyInfoes/1/book
 
-curl -i -X POST -d "{"firstName":"Steve","phoneNumber":"312341"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/buddyInfoes/book/1
+curl -i -X POST -d "{"firstName":"Steve","phoneNumber":"312341"}" -H "Content-Type:application/json" /buddyInfoes/book/1
 
-curl -i -X PUT -H "Content-Type:text/uri-list" -d "https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks/1" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/buddyInfoes/2/book
+curl -i -X PUT -H "Content-Type:text/uri-list" -d "/addressBooks/1" /buddyInfoes/2/book
 
-curl -i -X POST -d "{"firstName":"Max","phoneNumber":"31432"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/buddyInfoes/book/2
+curl -i -X POST -d "{"firstName":"Max","phoneNumber":"31432"}" -H "Content-Type:application/json" /buddyInfoes/book/2
 
-curl -i -X PUT -H "Content-Type:text/uri-list" -d "https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks/2" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/buddyInfoes/3/book
+curl -i -X PUT -H "Content-Type:text/uri-list" -d "/addressBooks/2" /buddyInfoes/3/book
