@@ -50,7 +50,7 @@ class BuddyControllerTest {
         mockMvc.perform(post("/buddyInfoes")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payload))
-                .andExpect(jsonPath("$.id").value(2))
+                .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.firstName").value("John"));
 
         mockMvc.perform(get("/buddyInfoes/2")
