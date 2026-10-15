@@ -44,12 +44,12 @@ public class AddressBookControllerTest {
     public void testCreateAndGetAddressBook() throws Exception {
         String payload = objectMapper.writeValueAsString(addressBook);
 
-        mockMvc.perform(post("/AddressBook")
+        mockMvc.perform(post("/addressbook")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payload))
         .andExpect(jsonPath("$.id").value(2));
 
-        mockMvc.perform(get("/AddressBook/2")
+        mockMvc.perform(get("/addressbook/2")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
@@ -59,12 +59,12 @@ public class AddressBookControllerTest {
         String payload = objectMapper.writeValueAsString(addressBook);
         String buddyLoad = objectMapper.writeValueAsString(buddyInfo);
 
-        mockMvc.perform(post("/AddressBook")
+        mockMvc.perform(post("/addressbook")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payload))
                 .andExpect(jsonPath("$.id").value(1));
 
-        mockMvc.perform(post("/AddressBook/1/BuddyInfo")
+        mockMvc.perform(post("/addressbook/1/BuddyInfo")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(buddyLoad))
                 .andExpect(status().isOk());
