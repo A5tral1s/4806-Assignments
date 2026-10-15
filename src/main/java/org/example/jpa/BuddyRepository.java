@@ -1,6 +1,5 @@
-package org.example.jpa.repository;
+package org.example.jpa;
 
-import org.example.jpa.model.BuddyInfo;
 import org.springframework.data.repository.CrudRepository;
 
 public interface BuddyRepository extends CrudRepository<BuddyInfo, Long> {

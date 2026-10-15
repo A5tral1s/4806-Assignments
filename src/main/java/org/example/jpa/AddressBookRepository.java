@@ -1,7 +1,4 @@
-package org.example.jpa.repository;
-
-
-import org.example.jpa.model.AddressBook;
+package org.example.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
