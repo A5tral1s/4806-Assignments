@@ -59,7 +59,7 @@ public class AddressBookControllerTest {
         String payload = objectMapper.writeValueAsString(addressBook);
         String buddyLoad = objectMapper.writeValueAsString(buddyInfo);
 
-        mockMvc.perform(post("/addressBooks")
+        mockMvc.perform(post("/AddressBook")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payload))
                 .andExpect(jsonPath("$.id").value(1));
