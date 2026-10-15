@@ -1,7 +1,18 @@
-curl -v https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBook
+curl -X GET https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net
 
-curl -X GET https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBook -H "Accept: application/json"
+# Test POST request with JSON data
+curl -i -X POST -d "{"name":"Base"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook
 
-curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBook -H "Content-Type: application/json" -d '{"name":"Solo"}'
+curl -i -X POST -d "{"name":"Solo"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook
 
-curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBook/1/BuddyInfo -H "Content-Type: application/json" -d '{"firstName":"John", "phoneNumber":"5550199"}'
+curl -i -X POST -d "{"firstName":"Carl","phoneNumber":"1231"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/book/1
+
+curl -i -X PUT -H "Content-Type:text/uri-list" -d "https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook/1" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/1/book
+
+curl -i -X POST -d "{"firstName":"Steve","phoneNumber":"312341"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/book/1
+
+curl -i -X PUT -H "Content-Type:text/uri-list" -d "https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook/1" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/2/book
+
+curl -i -X POST -d "{"firstName":"Max","phoneNumber":"31432"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/book/2
+
+curl -i -X PUT -H "Content-Type:text/uri-list" -d "https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook/2" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/3/book

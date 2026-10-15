@@ -32,7 +32,7 @@ public class AddressBookController {
         return addressBook.getBuddies();
     }
 
-    @PostMapping
+    @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public AddressBook createAddressBook(@RequestBody AddressBook book) {
         return addressBookRepository.save(book);

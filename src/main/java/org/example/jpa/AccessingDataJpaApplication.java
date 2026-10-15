@@ -11,6 +11,8 @@ import java.net.URI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import tools.jackson.databind.ObjectMapper;
+
 
 @SpringBootApplication
 public class AccessingDataJpaApplication {
@@ -22,6 +24,7 @@ public class AccessingDataJpaApplication {
         List<String> lines = Files.readAllLines(Path.of(filePath));
 
         try (HttpClient client = HttpClient.newHttpClient()) {
+
             for (String line : lines) {
                 if (line.isBlank() || line.trim().startsWith("#")) continue;
                 System.out.println("Running: " + line);
