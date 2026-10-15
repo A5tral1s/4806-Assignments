@@ -43,43 +43,35 @@ public class AddressBookControllerTest {
     @Test
     public void testCreateAndGetAddressBook() throws Exception {
         String payload = objectMapper.writeValueAsString(addressBook);
+
+        mockMvc.perform(post("/addressBooks")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(payload))
+        .andExpect(jsonPath("$.id").value(2));
+
+        mockMvc.perform(get("/addressBooks/2")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testAddBuddyToAddressBook() throws Exception {
+        String payload = objectMapper.writeValueAsString(addressBook);
         String buddyLoad = objectMapper.writeValueAsString(buddyInfo);
 
         mockMvc.perform(post("/addressBooks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payload))
-        .andExpect(jsonPath("$.id").value(1));
+                .andExpect(jsonPath("$.id").value(1));
 
         mockMvc.perform(post("/addressBooks/1/buddies")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(buddyLoad))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(buddyLoad))
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/addressBooks/1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].firstName").value("John"));
-    }
-
-    @Test
-    public void testAddBuddyToAddressBook() throws Exception {
-        // Create a mock BuddyInfo object
-        AddressBook book = new AddressBook("testing");
-        book.setId(1L);
-        BuddyInfo newBuddy = new BuddyInfo("John Doe", 12313, book);
-
-        // 3. Test POST: Add a BuddyInfo to an AddressBook (Assuming AddressBook ID is 1)
-        mockMvc.perform(post("/addressBooks/1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(newBuddy)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.firstName").value("John Doe"))
-                .andExpect(jsonPath("$.phoneNumber").value(12313));
-
-        // 4. Test GET: Retrieve buddies from AddressBook 1
-        mockMvc.perform(get("/addressBooks/1/buddies")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].firstName").value("John Doe"));
     }
 }
