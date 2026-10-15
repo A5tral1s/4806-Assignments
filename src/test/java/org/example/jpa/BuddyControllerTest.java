@@ -49,7 +49,7 @@ class BuddyControllerTest {
     public void testCreateAndGetBuddy() throws Exception {
         String payload = objectMapper.writeValueAsString(buddyInfo);
 
-        MvcResult result = mockMvc.perform(post("/buddyInfoes")
+        MvcResult result = mockMvc.perform(post("/BuddyInfo")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payload))
                 .andExpect(jsonPath("$.phoneNumber").value(13213))
@@ -60,7 +60,7 @@ class BuddyControllerTest {
         String contentJson = result.getResponse().getContentAsString();
         JsonNode jsonNode = objectMapper.readTree(contentJson);
         long generatedId = jsonNode.get("id").asLong();
-        String url = "/buddyInfoes/" + generatedId;
+        String url = "/BuddyInfo/" + generatedId;
         mockMvc.perform(get(url)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
