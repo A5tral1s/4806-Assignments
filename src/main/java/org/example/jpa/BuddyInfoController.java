@@ -33,9 +33,10 @@ public class BuddyInfoController {
     public BuddyInfo addBuddyToBook(@PathVariable Long bookId, @RequestBody BuddyInfo buddy) {
         AddressBook book = addressBookRepository.findById(bookId)
                 .orElseThrow(() -> new RuntimeException("Book not found"));
-        book.addBuddy(buddy);
+        buddyRepository.save(buddy);
         buddy.setBook(book);
-        return buddyRepository.save(buddy);
+        book.addBuddy(buddy);
+        return buddy;
     }
 
     @PutMapping(path = "/{id}/book")
