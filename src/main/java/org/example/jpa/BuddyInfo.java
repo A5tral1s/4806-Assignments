@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class BuddyInfo implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     private String firstName;
