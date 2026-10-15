@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @RestController
-@RequestMapping("/addressbook")
+@RequestMapping("/addressBook")
 public class AddressBookController {
 
     @Autowired
