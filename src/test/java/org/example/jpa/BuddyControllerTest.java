@@ -9,8 +9,10 @@ import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.client.RestTestClient;
 import org.springframework.transaction.annotation.Transactional;
+import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -47,13 +49,19 @@ class BuddyControllerTest {
     public void testCreateAndGetBuddy() throws Exception {
         String payload = objectMapper.writeValueAsString(buddyInfo);
 
-        mockMvc.perform(post("/buddyInfoes")
+        MvcResult result = mockMvc.perform(post("/buddyInfoes")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payload))
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.firstName").value("John"));
+                .andExpect(jsonPath("$.phoneNumber").value(13213))
+                .andExpect(jsonPath("$.firstName").value("John"))
+                .andReturn();
 
-        mockMvc.perform(get("/buddyInfoes/1")
+
+        String contentJson = result.getResponse().getContentAsString();
+        JsonNode jsonNode = objectMapper.readTree(contentJson);
+        long generatedId = jsonNode.get("id").asLong();
+        String url = "/buddyInfoes/" + generatedId;
+        mockMvc.perform(get(url)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
         .andExpect(jsonPath("$.firstName").value("John"));
