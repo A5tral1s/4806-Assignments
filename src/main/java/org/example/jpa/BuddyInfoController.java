@@ -26,10 +26,8 @@ public class BuddyInfoController {
     public BuddyInfo addBuddyToBook(@PathVariable Long bookId, @RequestBody BuddyInfo buddy) {
         AddressBook book = addressBookRepository.findById(bookId)
                 .orElseThrow(() -> new RuntimeException("Book not found"));
-
         buddy.setBook(book);
         return buddyRepository.save(buddy);
-
     }
 
     @PostMapping

@@ -35,4 +35,12 @@ public class AddressBookController {
     public AddressBook createAddressBook(@RequestBody AddressBook book) {
         return addressBookRepository.save(book);
     }
+
+    @PostMapping("/{id}/buddies")
+    public BuddyInfo createBuddy(@PathVariable Long id, @RequestBody BuddyInfo buddyInfo) {
+        AddressBook addressBook = addressBookRepository.getReferenceById(id);
+        addressBook.addBuddy(buddyInfo);
+        addressBookRepository.save(addressBook);
+        return buddyInfo;
+    }
 }
