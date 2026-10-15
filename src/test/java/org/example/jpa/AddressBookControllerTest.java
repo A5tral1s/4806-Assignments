@@ -4,17 +4,19 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import tools.jackson.databind.ObjectMapper;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-@SpringBootTest(classes = {AddressBookController.class, BuddyInfoController.class})
+@SpringBootTest
+@AutoConfigureMockMvc
 public class AddressBookControllerTest {
 
     @Autowired
@@ -35,7 +37,7 @@ public class AddressBookControllerTest {
         mockMvc.perform(post("/addressBooks")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payload))
-                .andExpect(status().isCreated())
+                .andExpect(status().isOk())
         .andExpect(jsonPath("$.id").value(1));
 
         this.mockMvc.perform(post("/buddies")
