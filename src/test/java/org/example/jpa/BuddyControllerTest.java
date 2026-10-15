@@ -53,7 +53,7 @@ class BuddyControllerTest {
                 .andExpect(jsonPath("$.id").value(2))
                 .andExpect(jsonPath("$.firstName").value("John"));
 
-        mockMvc.perform(get("/buddyInfoes/1")
+        mockMvc.perform(get("/buddyInfoes/2")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
         .andExpect(jsonPath("$.firstName").value("John"));
