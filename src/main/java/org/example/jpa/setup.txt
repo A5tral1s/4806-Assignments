@@ -1,4 +1,4 @@
-curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks -d "{"name":"Solo"}" -H "Content-Type:application/json"
+curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks -H "Content-Type:application/json" -d "{"name":"Solo"}"
 
 
 curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks/1/buddyinfo -H "Content-Type: application/json" -d '{"firstName":"John", "phoneNumber":"555-0199"}'
