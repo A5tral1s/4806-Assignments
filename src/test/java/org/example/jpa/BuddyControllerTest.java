@@ -60,7 +60,7 @@ class BuddyControllerTest {
         JsonNode jsonNode = objectMapper.readTree(contentJson);
         long generatedId = jsonNode.get("id").asLong();
         String url = "/BuddyInfo/" + generatedId;
-        mockMvc.perform(get(url)
+        mockMvc.perform(get("/BuddyInfo/" + generatedId)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
         .andExpect(jsonPath("$.firstName").value("John"));
