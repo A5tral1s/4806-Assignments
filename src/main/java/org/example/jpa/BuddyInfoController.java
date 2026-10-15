@@ -29,7 +29,7 @@ public class BuddyInfoController {
         return (List<BuddyInfo>) buddyRepository.findAll();
     }
 
-    @PostMapping(path = "/book/{bookId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/book/{bookId}")
     public BuddyInfo addBuddyToBook(@PathVariable Long bookId, @RequestBody BuddyInfo buddy) {
         AddressBook book = addressBookRepository.findById(bookId)
                 .orElseThrow(() -> new RuntimeException("Book not found"));
@@ -37,7 +37,7 @@ public class BuddyInfoController {
         return buddyRepository.save(buddy);
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public BuddyInfo addBuddy(@RequestBody BuddyInfo buddy) {
         return buddyRepository.save(buddy);

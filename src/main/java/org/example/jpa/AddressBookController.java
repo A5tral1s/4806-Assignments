@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @RestController
-@RequestMapping("/addressBook")
+@RequestMapping("/AddressBook")
 public class AddressBookController {
 
     @Autowired
@@ -32,13 +32,13 @@ public class AddressBookController {
         return addressBook.getBuddies();
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AddressBook createAddressBook(@RequestBody AddressBook book) {
         return addressBookRepository.save(book);
     }
 
-    @PostMapping(path = "/{id}/BuddyInfo", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/{id}/BuddyInfo")
     public BuddyInfo createBuddy(@PathVariable Long id, @RequestBody BuddyInfo buddyInfo) {
         AddressBook addressBook = addressBookRepository.getReferenceById(id);
         addressBook.addBuddy(buddyInfo);
