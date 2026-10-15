@@ -1,6 +1,6 @@
-curl -I https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/h2-console
+curl -I https://rest-h2.workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/h2-console
 
-curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook -H "Content-Type: application/json" -d "{"name":"Solo"}"
+curl -X POST https://rest-h2.workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook -H "Content-Type: application/json" -d "{"name":"Solo"}"
 
 curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBook/1/BuddyInfo \
      -H "Content-Type: application/json" \
