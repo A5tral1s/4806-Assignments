@@ -56,7 +56,6 @@ class BuddyControllerTest {
                 .andExpect(jsonPath("$.firstName").value("John"))
                 .andReturn();
 
-
         String contentJson = result.getResponse().getContentAsString();
         JsonNode jsonNode = objectMapper.readTree(contentJson);
         long generatedId = jsonNode.get("id").asLong();

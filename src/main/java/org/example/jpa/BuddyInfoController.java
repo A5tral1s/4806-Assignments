@@ -18,7 +18,7 @@ public class BuddyInfoController {
         this.buddyRepository = buddyRepository;
     }
 
-    @GetMapping("/buddyInfoes/{id}")
+    @GetMapping("/BuddyInfo/{id}")
     public BuddyInfo getAddressBookById(@PathVariable Long id) {
         return buddyRepository.findById(id).orElse(null);
     }
