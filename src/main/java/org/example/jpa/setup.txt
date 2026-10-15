@@ -1,8 +1,7 @@
-curl -X GET https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net
+curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks -d "{"name":"Solo"}" -H "Content-Type:application/json"
 
-# Test POST request with JSON data
-curl -i -X POST -d "{"name":"Base"}" -H "Content-Type:application/json" /addressBooks
 
+curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBooks/1/buddyinfo -H "Content-Type: application/json" -d '{"firstName":"John", "phoneNumber":"555-0199"}'
 curl -i -X POST -d "{"name":"Solo"}" -H "Content-Type:application/json" /addressBooks
 
 curl -i -X POST -d "{"firstName":"Carl","phoneNumber":"1231"}" -H "Content-Type:application/json" /buddyInfoes/book/1
