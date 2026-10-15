@@ -34,7 +34,6 @@ public class BuddyInfoController {
         AddressBook book = addressBookRepository.findById(bookId)
                 .orElseThrow(() -> new RuntimeException("Book not found"));
         book.addBuddy(buddy);
-        addressBookRepository.save(book);
         buddy.setBook(book);
         return buddyRepository.save(buddy);
     }
