@@ -1,6 +1,7 @@
 package org.example.jpa;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,11 @@ public class BuddyInfoController {
     public BuddyInfoController(AddressBookRepository addressBookRepository, BuddyRepository buddyRepository) {
         this.addressBookRepository = addressBookRepository;
         this.buddyRepository = buddyRepository;
+    }
+
+    @GetMapping("/buddyInfoes/{id}")
+    public BuddyInfo getAddressBookById(@PathVariable Long id) {
+        return buddyRepository.findById(id).orElse(null);
     }
 
     @GetMapping
