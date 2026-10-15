@@ -1,6 +1,7 @@
 package org.example.jpa;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class BuddyInfoController {
         return (List<BuddyInfo>) buddyRepository.findAll();
     }
 
-    @PostMapping("/book/{bookId}")
+    @PostMapping(path = "/book/{bookId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public BuddyInfo addBuddyToBook(@PathVariable Long bookId, @RequestBody BuddyInfo buddy) {
         AddressBook book = addressBookRepository.findById(bookId)
                 .orElseThrow(() -> new RuntimeException("Book not found"));
@@ -36,7 +37,7 @@ public class BuddyInfoController {
         return buddyRepository.save(buddy);
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public BuddyInfo addBuddy(@RequestBody BuddyInfo buddy) {
         return buddyRepository.save(buddy);

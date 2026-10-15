@@ -2,6 +2,7 @@ package org.example.jpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,13 +32,13 @@ public class AddressBookController {
         return addressBook.getBuddies();
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public AddressBook createAddressBook(@RequestBody AddressBook book) {
         return addressBookRepository.save(book);
     }
 
-    @PostMapping("/{id}/BuddyInfo")
+    @PostMapping(path = "/{id}/BuddyInfo", consumes = MediaType.APPLICATION_JSON_VALUE)
     public BuddyInfo createBuddy(@PathVariable Long id, @RequestBody BuddyInfo buddyInfo) {
         AddressBook addressBook = addressBookRepository.getReferenceById(id);
         addressBook.addBuddy(buddyInfo);

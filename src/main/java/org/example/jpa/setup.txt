@@ -2,6 +2,6 @@ curl -v https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/
 
 curl -X GET https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBook -H "Accept: application/json"
 
-curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBook -H "Content-Type: application/json" -d "{"name":"Solo"}"
+curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBook -H "Content-Type: application/json" -d '{"name":"Solo"}'
 
-curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressbook/1/BuddyInfo -H "Content-Type: application/json" -d '{"firstName":"John", "phoneNumber":"5550199"}'
+curl -X POST https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/addressBook/1/BuddyInfo -H "Content-Type: application/json" -d '{"firstName":"John", "phoneNumber":"5550199"}'
