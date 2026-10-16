@@ -55,4 +55,11 @@ public class BuddyInfoController {
         return buddyRepository.save(buddy);
     }
 
+    @GetMapping("/{id}/address")
+    public String getAddress(@PathVariable Long id) {
+        BuddyInfo buddy = buddyRepository.findById(id).orElse(null);
+        String info = "This is " + buddy.getFirstName() + " and they live at " + buddy.getAddress() + ". Their phone number is " + buddy.getPhoneNumber();
+        return info;
+    }
+
 }
