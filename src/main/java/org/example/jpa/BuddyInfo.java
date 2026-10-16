@@ -14,19 +14,19 @@ public class BuddyInfo implements Serializable {
 
     private String firstName;
     private Integer phoneNumber;
-    private String address;
+    private String location;
 
     public BuddyInfo() {
         firstName = "Carl";
         phoneNumber = 1231;
-        address = "Null Street";
+        location = "Null Street";
     }
 
-    public BuddyInfo(String firstName, Integer phoneNumber, String address, AddressBook book) {
+    public BuddyInfo(String firstName, Integer phoneNumber, String location, AddressBook book) {
         this.firstName = firstName;
         this.phoneNumber = phoneNumber;
         this.book = book;
-        this.address = address;
+        this.location = location;
     }
 
     public Long getId() {
@@ -73,11 +73,11 @@ public class BuddyInfo implements Serializable {
         return phoneNumber;
     }
 
-    public String getAddress() {
-        return address;
+    public String getLocation() {
+        return location;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setLocation(String address) {
+        this.location = address;
     }
 }

@@ -1,8 +1,6 @@
 package org.example.jpa;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,8 +31,8 @@ public class BuddyInfoController {
     public BuddyInfo addBuddyToBook(@PathVariable Long bookId, @RequestBody BuddyInfo buddy) {
         AddressBook book = addressBookRepository.findById(bookId)
                 .orElseThrow(() -> new RuntimeException("Book not found"));
-        buddyRepository.save(buddy);
         buddy.setBook(book);
+        buddyRepository.save(buddy);
         book.addBuddy(buddy);
         return buddy;
     }
@@ -56,9 +54,9 @@ public class BuddyInfoController {
     }
 
     @GetMapping("/{id}/address")
-    public String getAddress(@PathVariable Long id) {
+    public String getLocation(@PathVariable Long id) {
         BuddyInfo buddy = buddyRepository.findById(id).orElse(null);
-        String info = "This is " + buddy.getFirstName() + " and they live at " + buddy.getAddress() + ". Their phone number is " + buddy.getPhoneNumber();
+        String info = "This is " + buddy.getFirstName() + " and they live at " + buddy.getLocation() + ". Their phone number is " + buddy.getPhoneNumber();
         return info;
     }
 

@@ -5,8 +5,8 @@ curl -i -X POST -d "{"name":"Base"}" -H "Content-Type:application/json" https://
 
 curl -i -X POST -d "{"name":"Solo"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook
 
-curl -i -X POST -d "{"firstName":"Carl","phoneNumber":"1231", "address":"This place"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/book/1
+curl -i -X POST -d "{"firstName":"Carl","phoneNumber":"1231"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/book/1
 
-curl -i -X POST -d "{"firstName":"Steve","phoneNumber":"312341", "address":"That place"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/book/1
+curl -i -X POST -d "{"firstName":"Steve","phoneNumber":"312341"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/book/1
 
-curl -i -X POST -d "{"firstName":"Max","phoneNumber":"31432","address":"No place"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/book/2
+curl -i -X POST -d "{"firstName":"Max","phoneNumber":"31432"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/BuddyInfo/book/2
