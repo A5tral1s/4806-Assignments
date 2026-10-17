@@ -1,0 +1,17 @@
+curl -X GET http://localhost:8080
+
+curl -i -X POST -d "{"name":"Base"}" -H "Content-Type:application/json" http://localhost:8080/addressBooks
+
+curl -i -X POST -d "{"name":"Solo"}" -H "Content-Type:application/json" http://localhost:8080/addressBooks
+
+curl -i -X POST -d "{"firstName":"Carl","phoneNumber":"1231"}" -H "Content-Type:application/json" http://localhost:8080/buddyInfoes
+
+curl -i -X PUT -H "Content-Type:text/uri-list" -d "http://localhost:8080/addressBooks/1" http://localhost:8080/buddyInfoes/1/book
+
+curl -i -X POST -d "{"firstName":"Steve","phoneNumber":"312341"}" -H "Content-Type:application/json" http://localhost:8080/buddyInfoes
+
+curl -i -X PUT -H "Content-Type:text/uri-list" -d "http://localhost:8080/addressBooks/1" http://localhost:8080/buddyInfoes/2/book
+
+curl -i -X POST -d "{"firstName":"Max","phoneNumber":"31432"}" -H "Content-Type:application/json" http://localhost:8080/buddyInfoes
+
+curl -i -X PUT -H "Content-Type:text/uri-list" -d "http://localhost:8080/addressBooks/2" http://localhost:8080/buddyInfoes/3/book

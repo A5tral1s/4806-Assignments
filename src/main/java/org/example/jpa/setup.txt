@@ -1,6 +1,5 @@
 curl -X GET https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net
 
-# Test POST request with JSON data
 curl -i -X POST -d "{"name":"Base"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook
 
 curl -i -X POST -d "{"name":"Solo"}" -H "Content-Type:application/json" https://workingsite-fjhzbwhkcbcabvhk.canadacentral-01.azurewebsites.net/AddressBook
