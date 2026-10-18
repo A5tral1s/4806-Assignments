@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Address Book</title>
+    <meta charset="UTF-8"/>
+    <style>
+    body { font-family: sans-serif; margin: 40px; }
+    table { border-collapse: collapse; width: 50%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+<h2>Address Book List</h2>
+
+<div th:if="${not #lists.isEmpty(addressBooks)}">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entry : ${addressBooks}">
+            <td th:text="${entry.id}"></td>
+            <td>
+                <!-- Link to view details, passing an ID or path variable -->
+                <a th:href="@{/AddressBook/{id}(id=${entry.id})}"
+                   th:text="'View ' + ${entry.name}">View Details</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${#lists.isEmpty(addressBooks)}">
+    <p>No address book entries found.</p>
+</div>
+
+</body>
+</html>

@@ -17,7 +17,7 @@ import tools.jackson.databind.ObjectMapper;
 public class AccessingDataJpaApplication {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        String filePath = "src/main/java/org/example/jpa/setup.txt";
+        String filePath = "src/main/java/org/example/jpa/setup2.txt";
         SpringApplication.run(AccessingDataJpaApplication.class, args);
 
         List<String> lines = Files.readAllLines(Path.of(filePath));
