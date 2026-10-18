@@ -38,5 +38,11 @@
     <p>No address book entries found.</p>
 </div>
 
+<form th:action="@{/add}" th:object="${newItem}" method="post">
+    <label for="name">Item Name:</label>
+    <input type="text" id="name" name="name" required/>
+    <button type="submit">Add to Table</button>
+</form>
+
 </body>
 </html>

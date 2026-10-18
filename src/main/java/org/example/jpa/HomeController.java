@@ -1,8 +1,7 @@
 package org.example.jpa;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -21,5 +20,17 @@ public class HomeController {
         List<AddressBook> addressBooks = addressBookRepository.findAll();
         model.addAttribute("addressBooks", addressBooks);
         return new ModelAndView("index");
+    }
+
+    @GetMapping("/add")
+    public ModelAndView addAddress() {
+        return new ModelAndView("index");
+    }
+
+    @PostMapping("/add")
+    public ModelAndView addAddress(@RequestParam("name") String name) {
+        AddressBook addressBook = new AddressBook(name);
+        addressBookRepository.save(addressBook);
+        return new ModelAndView("redirect:/");
     }
 }
